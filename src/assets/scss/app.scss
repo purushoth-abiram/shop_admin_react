@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
+@import "~bootstrap/scss/functions";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+@import "variable";
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "bootstrap/scss/functions";
+
+// @import "variables";
+@import "bootstrap/scss/variables";
+
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/helpers";
+
+@import "bootstrap/scss/utilities/api";
+
+@import "bootstrap/scss/transitions";
+@import "~bootstrap/scss/accordion";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/placeholders";
+@import "bootstrap/scss/dropdown";
+
+* {
+  outline: none !important;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+.bgAuthLogin {
+  background-image: url("../images/banner_img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+ 
+  object-fit: cover;
+  border-radius: 0px;
+  width: 100%;
+  opacity: 1;
+  object-position: center 100%;
+  overflow-y: hidden;
+}

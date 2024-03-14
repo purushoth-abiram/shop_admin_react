@@ -1,0 +1,21 @@
+$body-bg: #ffffff;
+$primary: #801514;
+
+$secondary: #A9A9A9;
+$danger: #ff0000;
+$info: #4f58ff;
+$warning: #fec53d;
+$success: #6bc505;
+
+$gradient-top: #4f58ff;
+$gradient-bottom: #3d2080;
+
+$font-family-sans-serif  : 'Open Sans', sans-serif !default;
+$enable-negative-margins: true !default;
+$enable-gradients: true !default;
+
+:root {
+  --side-nav-bar-width: 325px;
+  --side-nav-bar-width-ne: -325px;
+  --nav-header-height: 80px;
+}

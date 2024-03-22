@@ -71,7 +71,7 @@ export default function Index() {
         insertAdminLogin(_formData.Email, _formData.Password)
             .then((response) => {
                 debugger;
-                if (response.data.status === "Success") {
+                if (response?.data?.status === "Success") {
                     Swal.fire({
                         text: 'Login Successful',
                         icon: 'success',

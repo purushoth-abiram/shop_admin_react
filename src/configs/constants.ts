@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "production") {
 
 export const ROUTES = {
     home                            : baseRoute,
-
+    dashboard : baseRoute + "dashboard",
     auth:{
       home :                   baseRoute,
     },

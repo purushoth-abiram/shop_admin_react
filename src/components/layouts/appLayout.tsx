@@ -3,15 +3,16 @@ import { Outlet } from 'react-router-dom';
 import "../../assets/scss/app.scss";
 import Header from './header';
 import Footer from './footer';
+import AdminLayout from './adminlayout';
 
 function AppLayout() {
 
   return (<div>
-    <Header />
+    <AdminLayout/>
     <div>
       <Outlet />
     </div>
-    <Footer />
+    
 
   </div>
   )

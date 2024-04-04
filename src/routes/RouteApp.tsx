@@ -9,33 +9,68 @@ import { ROUTES } from "../configs/constants";
 
 function RouteApp() {
 
-    const HomePage = lazy(() => import("../pages/home"));
-    const DashPage = lazy(() => import("../pages/dashboard/dashboard"));
-
+    const HomePage    = lazy(() => import("../pages/home"));
+    const DashPage    = lazy(() => import("../pages/dashboard/dashboard"));
+    const AddProduct  = lazy(() => import("../pages/products/addproduct"));
+    const ProductList = lazy(() => import("../pages/products/productlist"));
+    const Categories  = lazy(() => import("../pages/products/categories"));
+    const Brands      = lazy(() => import("../pages/products/categories")); 
     return (<>
+    
     <Routes>
+      <Route path={ROUTES.home} element={< Authlayout />}>
+            <Route
+              path={ROUTES.auth.login}
+              element={ 
+                <Suspense fallback={""}>
+                  < AuthLogin />
+                </Suspense>
+              }
+            />
+      </Route>
 
-    <Route path={ROUTES.home} element={< Authlayout />}>
-          <Route
-            path={ROUTES.auth.home}
-            element={ 
-              <Suspense fallback={""}>
-                < AuthLogin />
-              </Suspense>
-            }
-          />
-          </Route>
-
-        <Route path={ROUTES.home} element={<AppLayout />}>
-          <Route
-            path={ROUTES.dashboard}
-            element={
-              <Suspense fallback={""}>
-                <DashPage />
-              </Suspense>
-            }
-          />
-          </Route>
+      <Route path={ROUTES.home} element={<AppLayout />}>
+            <Route
+              path={ROUTES.dashboard}
+              element={
+                <Suspense fallback={""}>
+                  <DashPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path={ROUTES.products.addproduct}
+              element={
+                <Suspense fallback={""}>
+                  <AddProduct />
+                </Suspense>
+              }
+            />
+            <Route
+              path={ROUTES.products.productlist}
+              element={
+                <Suspense fallback={""}>
+                  <ProductList />
+                </Suspense>
+              }
+            />
+            <Route
+              path={ROUTES.products.categories}
+              element={
+                <Suspense fallback={""}>
+                  <Categories />
+                </Suspense>
+              }
+            />
+            <Route
+              path={ROUTES.products.brands}
+              element={
+                <Suspense fallback={""}>
+                  <Brands />
+                </Suspense>
+              }
+            />
+      </Route>
     </Routes>
     </>)
 }

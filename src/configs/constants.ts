@@ -7,10 +7,16 @@ if (process.env.NODE_ENV === "production") {
 }
 
 export const ROUTES = {
-    home                            : baseRoute,
-    dashboard : baseRoute + "dashboard",
+    home                            : baseRoute ,
     auth:{
-      home :                   baseRoute,
+      login                         : baseRoute,
+    },
+    dashboard                       : baseRoute + "dashboard",
+    products:{
+        addproduct : baseRoute + 'Products/addproduct',
+        productlist : baseRoute + 'Products/productlist',
+        categories : baseRoute + 'Products/categories',
+        brands : baseRoute + 'Products/brands',
     },
 
     api:{

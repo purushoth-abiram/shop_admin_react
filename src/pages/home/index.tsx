@@ -7,7 +7,7 @@ import { userSession } from '../../services/HelperService';
 import { getLocalStorage, insertUpdateLocalStorage } from '../../services/AuthService';
 import { insertAdminLogin } from '../../models/model';
 import Swal from 'sweetalert2'; 
- 
+import { ROUTES } from '../../configs/constants';
  
  
 export default function Index() {
@@ -76,7 +76,8 @@ export default function Index() {
                         text: 'Login Successful',
                         icon: 'success',
                         confirmButtonText: 'OK',
-                    });               
+                    }); 
+                    navigate(ROUTES.dashboard)               
                 }
             
             })

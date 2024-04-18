@@ -14,7 +14,7 @@ function RouteApp() {
     const AddProduct  = lazy(() => import("../pages/products/addproduct"));
     const ProductList = lazy(() => import("../pages/products/productlist"));
     const Categories  = lazy(() => import("../pages/products/categories"));
-    const Brands      = lazy(() => import("../pages/products/categories")); 
+    const Brands      = lazy(() => import("../pages/products/brands")); 
     return (<>
     
     <Routes>

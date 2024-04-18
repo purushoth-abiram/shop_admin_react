@@ -83,6 +83,7 @@ body {
   transition: 850ms;
 }
 
+
 .nav-menu.active {
   left: 0;
   transition: 350ms;
@@ -93,7 +94,6 @@ body {
   align-items: center;
   padding: 8px 0px 8px 16px;
   list-style: none;
-  height: 60px;
 }
 
 .nav-text a {
@@ -104,7 +104,6 @@ body {
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 16px;
   border-radius: 4px;
 }
 
@@ -125,6 +124,10 @@ body {
   align-items: center;
 }
 
+.nav-menu-items.adjusted {
+  margin-top: 50px; /* Adjust the value according to your layout */
+}
+
 span {
   margin-left: 16px;
 }
@@ -133,58 +136,3 @@ span {
   color: white;
 }
 
-
-//sidebar
-
-// .sidebar {
-//   /* Your sidebar styles */
-// }
-
-// 
-// .nav-menu {
-//   width: 250px; /* Adjust width as needed */
-//   height: 100%;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   background-color: #333; /* Sidebar background color */
-//   overflow-y: auto; /* Enable scrolling if needed */
-// }
-
-// .nav-menu-items {
-//   padding: 0;
-//   margin: 0;
-//   list-style: none;
-// }
-
-// .menu-title {
-//   display: flex;
-//   align-items: center;
-//   padding: 15px 20px;
-//   color: #fff; /* Menu item text color */
-//   text-decoration: none;
-// }
-
-// .menu-title:hover {
-//   background-color: #555; /* Background color on hover */
-// }
-
-// .submenu {
-//   background-color: #444; /* Submenu background color */
-//   padding-left: 0;
-// }
-
-// .submenu li {
-//   padding-left: 40px; /* Indent submenu items */
-// }
-
-// .submenu li a {
-//   color: #fff; /* Submenu item text color */
-//   text-decoration: none;
-//   display: block;
-//   padding: 10px 20px;
-// }
-
-// .submenu li a:hover {
-//   background-color: #666; /* Background color on hover */
-// }

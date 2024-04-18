@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './sidebarData';
-import { IconButton, Typography, Paper, Tooltip, TextField, InputAdornment, FormControl, InputLabel, OutlinedInput } from '@mui/material';
+import { IconButton, FormControl, InputLabel, OutlinedInput, InputAdornment } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import { FaBell, FaUser } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -14,8 +14,7 @@ function AdminLayout() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [activeSubMenuIndex, setActiveSubMenuIndex] = useState(null);
 
-  // Add a function to toggle the submenu
-  const toggleSubMenu = (index: any, e: any) => {
+  const toggleSubMenu = (index:any, e:any) => {
     e.stopPropagation();
     setIsSubMenuOpen(prevState => !prevState);
     setActiveSubMenuIndex(index);
@@ -30,7 +29,8 @@ function AdminLayout() {
           <div className="col-2">
             <Link to='#' className='menu-bars'>
               <FaIcons.FaBars onClick={showSidebar} />
-            </Link></div>
+            </Link>
+          </div>
           <div className="col-10 d-flex align-items-center">
             <div className="col-md-6">
               <FormControl className="bg-light" size="small" fullWidth variant="outlined">
@@ -58,14 +58,16 @@ function AdminLayout() {
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
+          {/* <ul className={`nav-menu-items ${isSubMenuOpen ? 'adjusted' : ''}`} onClick={showSidebar}> */}
             <li className='navbar-toggle'>
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            {SidebarData.map((item: any, index: any) => {
+            {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
+                {/* <li key={index} className={`${item.cName} ${isSubMenuOpen && activeSubMenuIndex === index ? 'adjusted' : ''}`}></li>   */}
                   {item.subMenu ? (
                     <>
                       <div className="menu-title d-flex align-items-center" onClick={(e) => toggleSubMenu(index, e)}>
@@ -80,17 +82,16 @@ function AdminLayout() {
                       {/* Render submenu if "Products" is clicked and the submenu is open */}
                       {isSubMenuOpen && activeSubMenuIndex === index && (
                         <ul className="submenu list-unstyled">
-                          {item.subMenu.map((subItem: any, subIndex: any) => (
+                          {item.subMenu.map((subItem, subIndex) => (
                             <li key={subIndex}>
                               <Link to={subItem.path}>{subItem.title}</Link>
                             </li>
                           ))}
                         </ul>
-
                       )}
                     </>
                   ) : (
-                    <div className="menu-title d-flex align-items-center">
+                    <div className="menu-title d-flex align-items-center" style={{marginRight:'2rem'}}>
                       <Link to={item.path}>
                         {item.icon}
                         <span>{item.title}</span>
@@ -100,7 +101,6 @@ function AdminLayout() {
                 </li>
               );
             })}
-
           </ul>
         </nav>
       </IconContext.Provider>
@@ -108,5 +108,4 @@ function AdminLayout() {
   );
 }
 
-
-export default AdminLayout
+export default AdminLayout;

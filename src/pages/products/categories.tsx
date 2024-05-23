@@ -1,13 +1,46 @@
 import { Paper, Table, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import React, { useState } from 'react'
+import { insertCategory } from '../../models/model';
+import Swal from 'sweetalert2';
 
 
 
 function Categories() {
 
     const [showCreateForm, setShowCreateForm] = useState(false);
+    const [_formData, _setFormData] = useState<any>({
+        categoryName:""
+    });
+    
     const handleCreateClick = () =>{
         setShowCreateForm(true);
+    }
+
+    const changeFormData = (name: string, value: any) => {
+        debugger;
+        _setFormData({ ..._formData, [name]: value });
+      };
+
+    const saveDetails = () => {
+        debugger;
+        insertCategory(_formData.categoryName).then((response: any) => {
+            debugger;
+          if (response.data.status === true) {
+                Swal.fire({
+                title: 'Success!',
+                text: 'Category Added successfully',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                });
+                _setFormData({
+                ..._formData,
+                categoryName:""
+                });
+            } 
+          else {
+                console.log("Bad Request")
+            }  
+        })
     }
       
   return (<>
@@ -68,9 +101,9 @@ function Categories() {
           <form className='col-md-6'>
             <div className="mb-3">
               <label htmlFor="categoryName" className="form-label fw-bold">Name</label>
-              <input type="text" className="form-control" id="categoryName" />
+              <input type="text" className="form-control" id="categoryName" value={_formData.categoryName} onChange={(e) => changeFormData("categoryName", e.target.value)}/>
             </div>
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button type="submit" className="btn btn-primary" onClick={saveDetails}>Save</button>
           </form>
         </div>
         </div>

@@ -10,6 +10,7 @@ import { ROUTES } from "../configs/constants";
 function RouteApp() {
 
     const HomePage    = lazy(() => import("../pages/home"));
+    const Signup      = lazy(() => import("../pages/home/signup"));
     const DashPage    = lazy(() => import("../pages/dashboard/dashboard"));
     const AddProduct  = lazy(() => import("../pages/products/addproduct"));
     const ProductList = lazy(() => import("../pages/products/productlist"));
@@ -24,6 +25,17 @@ function RouteApp() {
               element={ 
                 <Suspense fallback={""}>
                   < AuthLogin />
+                </Suspense>
+              }
+            />
+      </Route>
+
+      <Route path={ROUTES.home} element={< Authlayout />}>
+            <Route
+              path={ROUTES.auth.signup}
+              element={ 
+                <Suspense fallback={""}>
+                  < Signup />
                 </Suspense>
               }
             />

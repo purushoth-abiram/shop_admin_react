@@ -1,3 +1,5 @@
+import signup from "../pages/home/signup";
+
 const baseRoute = '/';
 export let baseApi = 'https://localhost:7017/api/';
 if (process.env.NODE_ENV === "production") {
@@ -8,8 +10,10 @@ if (process.env.NODE_ENV === "production") {
 export const ROUTES = {
     home                            : baseRoute ,
     auth:{
-      login                         : baseRoute,
+      login                         : baseRoute, 
+      signup                        : baseRoute + "signup",     
     },
+    
     dashboard                       : baseRoute + "dashboard",
     products:{
         addproduct : baseRoute + 'Products/addproduct',
@@ -20,7 +24,9 @@ export const ROUTES = {
 
     api:{
         adminLogin      : baseApi + 'AdminLogin/GetAdminLoginDetails',
-        categoryInsert  : baseApi + 'PostAddCategory'
+        signup          : baseApi + 'AdminSignUp/PostAdminSignUpDetails',  
+        categoryInsert  : baseApi + 'Category/PostAddCategory',
+        getcategory  : baseApi + 'Category/GetCategory'
     },
      
 };

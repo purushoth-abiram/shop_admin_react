@@ -1,6 +1,6 @@
-import { Paper, Table, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import React, { useState } from 'react'
-import { insertCategory } from '../../models/model';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { insertCategory,getCategory } from '../../models/model';
 import Swal from 'sweetalert2';
 
 
@@ -8,33 +8,38 @@ import Swal from 'sweetalert2';
 function Categories() {
 
     const [showCreateForm, setShowCreateForm] = useState(false);
-    const [_formData, _setFormData] = useState<any>({
-        categoryName:""
-    });
+    const [categoryId, setCategoryId] = useState(0);
+    const [categoryName, _setCategoryName] = useState<any>();
+const [Categorylist,setCategorylist]=useState<any>({});
+     const handleCategoryNameChange = (event:any) => {   _setCategoryName(event.target.value); };
     
     const handleCreateClick = () =>{
         setShowCreateForm(true);
     }
-
-    const changeFormData = (name: string, value: any) => {
+const GetCategories=()=>{
+    getCategory(categoryId).then((response=>{
         debugger;
-        _setFormData({ ..._formData, [name]: value });
-      };
-
+    if(response?.data?.status===true){
+        setCategorylist(response?.data?.data);
+        console.log(response?.data?.data);
+    }
+}))
+}
+useEffect(()=>{
+    GetCategories();
+},[])
     const saveDetails = () => {
         debugger;
-        insertCategory(_formData.categoryName).then((response: any) => {
+        console.log("Saving details for category:", categoryName);
+        insertCategory(categoryName).then((response: any) => {
             debugger;
+          console.log("Response from API:", response);  
           if (response.data.status === true) {
                 Swal.fire({
                 title: 'Success!',
                 text: 'Category Added successfully',
                 icon: 'success',
                 confirmButtonText: 'OK',
-                });
-                _setFormData({
-                ..._formData,
-                categoryName:""
                 });
             } 
           else {
@@ -56,9 +61,9 @@ function Categories() {
     <Table>
         <TableHead className="bg-light">
             <TableRow>
-                <TableCell className="fw-bold" align="center">
+                {/* <TableCell className="fw-bold" align="center">
                     <input type="checkbox" />
-                </TableCell>
+                </TableCell> */}
                 <TableCell className="fw-bold" align="center">Sr.No.</TableCell>
                 <TableCell className="fw-bold" align="center">Name</TableCell>
                 <TableCell className="fw-bold" align="center">Products</TableCell>
@@ -67,31 +72,20 @@ function Categories() {
                 <TableCell className="fw-bold" align="center">Action</TableCell>
             </TableRow>
         </TableHead>
-        {/* <TableBody>
-            {_list.length > 0 && _list.map((item: any, index: number) =>
-                item.specification ? (
+        <TableBody>
+            {Categorylist.length > 0 && Categorylist.map((item: any, index: number) =>
+                (
                     <TableRow key={index}>
-                        <TableCell align="center">{(index + 1) + ((_page - 1) * 10)}</TableCell>
-                        <TableCell align="center">{item.subServiceName}</TableCell>
-                        <TableCell align="center">{item.productName}</TableCell>
-                        <TableCell align="center">
-                            {item.specification.map((itemChild: any) =>
-                                <span>{itemChild.specificationName}<br /></span>
-                            )}
-                        </TableCell>
-                        <TableCell align="center">{item.displayName}</TableCell>
-                        <TableCell align="center">
-                            {CalcTimeZone(item?.specification[0]?.updatedat || item?.specification[0]?.createdAt)}
-                        </TableCell>
-                        <TableCell align="center">
-                            <Button variant={"text"} type={"button"} className="text-dark d-flex align-items-center" onClick={e => viewForm(e, item?.masterProductId, item)}>
-                                <EditIcon width={15} height={15} /><span className="ms-2">Edit</span>
-                            </Button>
-                        </TableCell>
+                        <TableCell align="center">{(index + 1)}</TableCell>
+                        <TableCell align="center">{item.categoryName}</TableCell>
+                        <TableCell align="center">{'-'}</TableCell>
+                        <TableCell align="center">{'-'}</TableCell>
+                        <TableCell align="center">{'-'}</TableCell>
+                        <TableCell align="center">{'-'}</TableCell> 
                     </TableRow>
-                ) : (<></>)
+                )
             )}
-        </TableBody> */}
+        </TableBody>
     </Table>
 </TableContainer>
     )}
@@ -101,7 +95,7 @@ function Categories() {
           <form className='col-md-6'>
             <div className="mb-3">
               <label htmlFor="categoryName" className="form-label fw-bold">Name</label>
-              <input type="text" className="form-control" id="categoryName" value={_formData.categoryName} onChange={(e) => changeFormData("categoryName", e.target.value)}/>
+              <input type="text" className="form-control" id="categoryName" value={categoryName} onChange={handleCategoryNameChange}/>
             </div>
             <button type="submit" className="btn btn-primary" onClick={saveDetails}>Save</button>
           </form>

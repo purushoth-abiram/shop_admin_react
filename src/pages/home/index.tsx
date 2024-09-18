@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IconButton, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
@@ -130,6 +130,9 @@ export default function Index() {
             </div>
             <div className='mt-4 d-flex justify-content-end px-3'>
                 <LoadingButton type="submit" className="col-md-4 col-6 bg-primary btn btn-block px-4 text-white textTransformNone rounded" endIcon={<></>} variant="contained" loadingPosition="end" loading={_loading}>Login</LoadingButton>
+            </div>
+            <div className='mt-4 d-flex justify-content-end px-3'>
+                <Link to="/signup">Don't have an account? SignUp</Link>
             </div>
         </form>
     </React.Fragment>

@@ -26,7 +26,8 @@ export const ROUTES = {
         adminLogin      : baseApi + 'AdminLogin/GetAdminLoginDetails',
         signup          : baseApi + 'AdminSignUp/PostAdminSignUpDetails',  
         categoryInsert  : baseApi + 'Category/PostAddCategory',
-        getcategory  : baseApi + 'Category/GetCategory'
+        getcategory     : baseApi + 'Category/GetCategory',
+        newProductAdd   : baseApi + 'Product/PostAddProduct'
     },
      
 };

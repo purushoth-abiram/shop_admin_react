@@ -20,3 +20,7 @@ export const insertCategory = (categoryName: any) => {
 export const getCategory = (categoryId: any) => {
     return httpGet(ROUTES.api.getcategory + "?categoryId=" + categoryId);
 };
+
+export const insertNewProduct = (formData:any) => {
+    return httpPost(ROUTES.api.newProductAdd, formData);
+}
